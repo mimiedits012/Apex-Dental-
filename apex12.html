@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Dental Solution | Biomedical Engineering & Dental Equipment</title>
+    <meta name="description" content="Apex Dental Solution - Specialists in manufacturing, installation, repair, maintenance, and sale of advanced dental equipment. Quality biomedical engineering solutions.">
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-navy: #0A192F;
+            --secondary-navy: #1E3A8A;
+            --sky-blue: #0EA5E9;
+            --light-blue: #E0F2FE;
+            --silver-gray: #F1F5F9;
+            --silver-border: #E2E8F0;
+            --white: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(14, 165, 233, 0.05);
+            --hover-shadow: 0 20px 35px -5px rgba(14, 165, 233, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #F8FAFC;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-navy);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .spinner {
+            width: 55px;
+            height: 55px;
+            border: 4px solid rgba(14, 165, 233, 0.2);
+            border-top-color: var(--sky-blue);
+            border-radius: 50%;
+            animation: spin 0.8s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Container & Global Elements */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            color: var(--primary-navy);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sky-blue), var(--secondary-navy));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 15px auto 0;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--sky-blue), var(--secondary-navy));
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-navy);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--hover-shadow);
+            border-color: rgba(14, 165, 233, 0.3);
+        }
+
+        /* Sticky Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 22px 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 25, 47, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 14px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--sky-blue), var(--secondary-navy));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--sky-blue);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--sky-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.88), rgba(30, 58, 138, 0.78)), 
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 820px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(14, 165, 233, 0.2);
+            border: 1px solid rgba(14, 165, 233, 0.4);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--sky-blue);
+            margin-bottom: 24px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            line-height: 1.15;
+            margin-bottom: 22px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #38BDF8, #93C5FD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 36px;
+            color: rgba(255, 255, 255, 0.88);
+            font-weight: 300;
+            max-width: 720px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        /* Counter Statistics Bar */
+        .stats-wrapper {
+            margin-top: -60px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .stats-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px 20px;
+            box-shadow: 0 20px 40px rgba(10, 25, 47, 0.08);
+            border: 1px solid var(--silver-border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background-color: var(--silver-border);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--sky-blue);
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+            display: block;
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 20px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .about-image-badge h4 {
+            font-size: 1.8rem;
+            color: var(--sky-blue);
+            font-weight: 700;
+        }
+
+        .about-image-badge p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-navy);
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+        }
+
+        .target-title {
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .target-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .target-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            font-size: 0.92rem;
+            color: var(--secondary-navy);
+        }
+
+        .target-list li i {
+            color: var(--sky-blue);
+        }
+
+        /* Products Section */
+        .products-bg {
+            background-color: var(--silver-gray);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--silver-border);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.08);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(10, 25, 47, 0.75);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-info {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info h3 {
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-info p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .product-btn {
+            width: 100%;
+            padding: 10px 0;
+            background: var(--light-blue);
+            color: var(--secondary-navy);
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-btn {
+            background: var(--sky-blue);
+            color: var(--white);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .service-card {
+            padding: 35px 25px;
+            text-align: center;
+            background: var(--white);
+            border: 1px solid var(--silver-border);
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            background: linear-gradient(180deg, var(--white), var(--light-blue));
+            transform: translateY(-6px);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--sky-blue), var(--secondary-navy));
+            color: var(--white);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            margin: 0 auto 24px;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-navy);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Why Choose Us Section */
+        .why-bg {
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-navy));
+            color: var(--white);
+        }
+
+        .why-bg .section-title h2 {
+            color: var(--white);
+        }
+
+        .why-bg .section-title p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 28px;
+            border-radius: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .why-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .why-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(14, 165, 233, 0.2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sky-blue);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .why-card p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10, 25, 47, 0.2), rgba(10, 25, 47, 0.85));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--white);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .gallery-overlay p {
+            font-size: 0.82rem;
+            color: var(--sky-blue);
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay h4,
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            padding: 35px;
+            background: var(--white);
+            border: 1px solid var(--silver-border);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars {
+            color: #F59E0B;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            color: var(--secondary-navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .user-details h4 {
+            font-size: 1rem;
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .user-details span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid var(--silver-border);
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            padding: 22px 28px;
+            background: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary-navy);
+            font-size: 1.02rem;
+            user-select: none;
+        }
+
+        .faq-question i {
+            color: var(--sky-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 28px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0, 1, 0, 1);
+            background: var(--white);
+            color: var(--text-muted);
+            font-size: 0.94rem;
+        }
+
+        .faq-item.active {
+            border-color: rgba(14, 165, 233, 0.4);
+            box-shadow: var(--card-shadow);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 28px 22px;
+            max-height: 300px;
+            transition: all 0.3s cubic-bezier(1, 0, 1, 0);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-info-card {
+            background: var(--primary-navy);
+            color: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .contact-info-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.92rem;
+            margin-bottom: 35px;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--sky-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item p {
+            font-size: 1.05rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-actions .btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 20px;
+            font-size: 0.88rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 160px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.88rem;
+            margin-top: 20px;
+        }
+
+        .contact-form-card {
+            padding: 45px;
+            background: var(--white);
+            border-radius: 24px;
+            border: 1px solid var(--silver-border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--silver-gray);
+            border: 1px solid var(--silver-border);
+            border-radius: 12px;
+            outline: none;
+            font-size: 0.92rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            background: var(--white);
+            border-color: var(--sky-blue);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+        }
+
+        .form-group textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 80px 0 25px;
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col-about p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin: 18px 0 22px;
+            max-width: 320px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--sky-blue);
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Floating Utilities */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 990;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--primary-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 990;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border: 1px solid var(--silver-border);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--sky-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.6rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .stat-item:not(:last-child)::after { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary-navy);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+            }
+            .nav-links.active { right: 0; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 1rem; }
+            .section-padding { padding: 70px 0; }
+            .target-list { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .about-image-badge { right: 10px; bottom: -10px; padding: 12px 20px; }
+            .contact-form-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+                APEX DENTAL
+            </a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Choose Us</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-shield-halved"></i> Premier Biomedical Engineering
+                </div>
+                <h1>Advanced Dental Equipment Solutions for <span>Modern Clinics</span></h1>
+                <p>We manufacture, install, repair, and maintain high-quality dental machines with precision, reliability, and expert biomedical engineering excellence.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary"><i class="fa-solid fa-layer-group"></i> View Products</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-headset"></i> Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Statistics Bar -->
+    <div class="container stats-wrapper">
+        <div class="stats-card">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="counter" data-target="12">0</h3>
+                    <p>Years Engineering Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="450">0</h3>
+                    <p>Equipments Manufactured & Installed</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="280">0</h3>
+                    <p>Clinics & Hospitals Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="99">0</h3>
+                    <p>% Client Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section-padding" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" alt="Apex Dental Biomedical Engineering Solutions">
+                    <div class="about-image-badge">
+                        <h4>100%</h4>
+                        <p>Certified Parts & Support</p>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="section-title" style="text-align: left; margin-bottom: 20px;">
+                        <h2>About Apex Dental Solution</h2>
+                    </div>
+                    <p>Apex Dental Solution is a trusted leader in biomedical engineering, dedicated to supplying, manufacturing, and maintaining world-class dental machinery. We bridging cutting-edge technology with practical clinical needs.</p>
+                    <p>From complex chair installations to preventive maintenance and rapid emergency repair services, our certified biomedical engineers ensure your practice operates with maximum uptime and clinical safety.</p>
+                    
+                    <p class="target-title">Tailored Engineering Services For:</p>
+                    <ul class="target-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Dental Clinics</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Hospitals & Medical Centers</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Dental Colleges & Universities</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Biomedical Engineers</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Private Dental Practices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section-padding products-bg" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Dental Equipment</h2>
+                <p>High-precision machinery engineered for ergonomic performance, longevity, and clinical excellence.</p>
+            </div>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQABqlNcsX5UTLCVvmWgBxpYsxhn0JnS2SEh8PQbKRYFA&s=10">
+                        <span class="product-tag">Best Seller</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>G1</h3>
+                      
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80" alt="Dental Compressor">
+                        <span class="product-tag">Medical Grade</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Dental Compressor</h3>
+                        <p>Ultra-quiet, oil-free medical air compressors delivering clean, dry, hygienic air continuously.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" alt="LED Operating Light">
+                    </div>
+                    <div class="product-info">
+                        <h3>LED Operating Light</h3>
+                        <p>Advanced shadowless LED surgical lamps featuring customizable color temperature and sensor activation.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" alt="Ultrasonic Scaler">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ultrasonic Scaler</h3>
+                        <p>High-frequency Piezoelectric scalers for effective, painless calculus removal and periodontal therapy.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80" alt="Suction Unit">
+                    </div>
+                    <div class="product-info">
+                        <h3>Suction Unit</h3>
+                        <p>High-power surgical suction pumps engineered for optimal fluid evacuation and quiet operation.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" alt="Dental X-Ray Machine">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dental X-Ray Machine</h3>
+                        <p>Low-dose high-frequency intraoral digital X-ray generators producing ultra-clear diagnostics.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1583912267670-65759292372c?auto=format&fit=crop&w=600&q=80" alt="Autoclave Sterilizer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Autoclave Sterilizer</h3>
+                        <p>Class B micro-processor controlled vacuum autoclaves ensuring absolute sterilization safety.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="Air Compressor">
+                    </div>
+                    <div class="product-info">
+                        <h3>Air Compressor</h3>
+                        <p>Heavy-duty, low-vibration dual-cylinder central air systems for multi-chair practices.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Curing Light">
+                    </div>
+                    <div class="product-info">
+                        <h3>Curing Light</h3>
+                        <p>High-intensity cordless LED curing lights with fast polymerization power and multiple modes.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" alt="Handpiece Motor">
+                    </div>
+                    <div class="product-info">
+                        <h3>Handpiece Motor</h3>
+                        <p>Precision brushless electric micromotors and high-speed turbine handpieces with ceramic bearings.</p>
+                        <a href="#contact" class="product-btn">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Engineering Services</h2>
+                <p>Comprehensive technical support, manufacturing, and maintenance designed for peak operational reliability.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h3>Dental Equipment Manufacturing</h3>
+                    <p>Custom manufacturing of robust dental chair units and tailored clinical hardware solutions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h3>Precision Installation</h3>
+                    <p>Professional setup, calibration, and line connection for all types of dental machinery.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-wrench"></i></div>
+                    <h3>Repair & Overhaul</h3>
+                    <p>Rapid diagnostics and component-level repairs to keep hardware offline time minimal.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h3>Preventive Maintenance</h3>
+                    <p>Scheduled performance audits and servicing to catch potential faults before failure occurs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3>Annual Maintenance Contracts (AMC)</h3>
+                    <p>Hassle-free yearly service agreements offering complete peace of mind for clinic owners.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Equipment Upgrades</h3>
+                    <p>Technical modernizations to convert classic delivery units into contemporary digital setups.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h3>Biomedical Consultation</h3>
+                    <p>Expert layout planning and infrastructure advisory for opening new clinics or colleges.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Technical Support</h3>
+                    <p>On-demand phone and field engineer assistance to address daily operational queries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-padding why-bg" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Apex Dental Solution</h2>
+                <p>The preferred engineering partner for dental professionals seeking excellence and trust.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-card-icon"><i class="fa-solid fa-user-gear"></i></div>
+                    <div>
+                        <h3>Experienced Biomedical Engineers</h3>
+                        <p>Skilled specialists with deep engineering knowledge of complex dental electronics and hydraulics.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon"><i class="fa-solid fa-award"></i></div>
+                    <div>
+                        <h3>High Quality Products</h3>
+                        <p>Built with premium components designed to withstand intense daily practice demands.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <div>
+                        <h3>Affordable Pricing</h3>
+                        <p>Fair, transparent pricing for hardware sales, service packages, and spare parts.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div>
+                        <h3>Fast Turnaround & Installation</h3>
+                        <p>Prompt delivery and swift technical execution to keep your clinic operating without delay.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <div>
+                        <h3>Reliable After-Sales Support</h3>
+                        <p>Dedicated customer support ready to answer emergency service calls whenever you need us.</p>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon"><i class="fa-solid fa-gears"></i></div>
+                    <div>
+                        <h3>Genuine Spare Parts</h3>
+                        <p>Only authentic OEM spare parts are used to maintain your equipment's factory standard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section-padding" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Work & Installations</h2>
+                <p>Take a look at our completed clinic setups, manufacturing workshops, and engineering projects.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" alt="Full Dental Clinic Installation">
+                    <div class="gallery-overlay">
+                        <h4>Complete Clinic Setup</h4>
+                        <p>Full turnkey equipment installation</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Dental Chair Assembly">
+                    <div class="gallery-overlay">
+                        <h4>Chair Assembly & Testing</h4>
+                        <p>Precision calibration phase</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80" alt="Biomedical Workshop">
+                    <div class="gallery-overlay">
+                        <h4>Engineering Workshop</h4>
+                        <p>Overhaul & repair testing laboratory</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" alt="Radiology Equipment">
+                    <div class="gallery-overlay">
+                        <h4>Imaging Calibration</h4>
+                        <p>Low-radiation X-Ray unit setup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding products-bg" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Dentists Say</h2>
+                <p>Read real experiences from dental surgeons and hospital administrators who trust Apex Dental Solution.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Apex Dental Solution transformed our new practice setup. Their dental chairs are ergonomic and quiet, and the installation team was incredibly professional."</p>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">DA</div>
+                        <div class="user-details">
+                            <h4>Dr. Arsalan Khan</h4>
+                            <span>Principal Dentist, Smile Care Clinic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"When our central air compressor broke down, their engineers responded within hours. Their rapid repair work saved us from canceling a full day of surgeries!"</p>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">SM</div>
+                        <div class="user-details">
+                            <h4>Dr. Sarah Mehmood</h4>
+                            <span>Head of Dental Dept., City Hospital</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"We signed an AMC agreement for our 12-chair clinical training lab. The preventive servicing has kept our machinery running smoothly without a single hitch."</p>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">UA</div>
+                        <div class="user-details">
+                            <h4>Prof. Usman Ahmed</h4>
+                            <span>Dental College Administrator</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="section-padding" id="faqs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Have questions about installations, servicing, or warranties? Find quick answers below.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How quickly can you install a new dental chair unit?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard chair unit installations typically take between 4 to 8 hours once the plumbing and electrical lines are ready. Our engineers handle full setup and testing on the same day.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is included in an Annual Maintenance Contract (AMC)?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AMC covers scheduled preventive maintenance checks, fluid & filter replacements, electrical calibration, emergency fault callouts, and discounts on replacement spare parts.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do your manufactured machines come with a warranty?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All new dental units and machinery manufactured or supplied by Apex Dental Solution come with a comprehensive warranty on technical and structural components.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide genuine replacement spare parts?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We stock and supply only genuine OEM spare parts, valves, motors, and electronic boards to ensure your equipment maintains factory-certified performance and safety standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding products-bg" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Contact our engineering experts today for sales inquiries, repair requests, or technical support.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <div>
+                        <div class="contact-info-header">
+                            <h3>Apex Dental Solution</h3>
+                            <p>Specialists in Biomedical Engineering & Dental Equipment Sales, Repair & Maintenance.</p>
+                        </div>
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <h4>Phone / Call Us</h4>
+                                    <p>0333-5138965</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div>
+                                    <h4>Email Address</h4>
+                                    <p>info@apexdentalsolution.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>
+                                <div>
+                                    <h4>Working Hours</h4>
+                                    <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="contact-actions">
+                            <a href="tel:03335138965" class="btn btn-primary"><i class="fa-solid fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/923335138965" target="_blank" class="btn" style="background: #25D366; color: white;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div class="map-placeholder">
+                            <i class="fa-solid fa-location-dot" style="margin-right:8px; color: var(--sky-blue);"></i> Google Map Location Placeholder
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Dr. John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" placeholder="0333-XXXXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="facility">Clinic / Hospital Name</label>
+                            <input type="text" id="facility" placeholder="Modern Dental Clinic">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceType">Requirement Type</label>
+                            <select id="serviceType">
+                                <option value="buy">Purchase New Machinery</option>
+                                <option value="repair">Equipment Repair / Servicing</option>
+                                <option value="installation">Installation Request</option>
+                                <option value="amc">Annual Maintenance Contract (AMC)</option>
+                                <option value="other">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Please describe your equipment needs or repair requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 12px; padding: 16px;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col-about">
+                    <a href="#home" class="logo">
+                        <div class="logo-icon"><i class="fa-solid fa-tooth"></i></div>
+                        APEX DENTAL
+                    </a>
+                    <p>Apex Dental Solution specializes in manufacturing, installing, repairing, and maintaining top-tier dental equipment with precision biomedical engineering.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-us">Why Choose Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#products">Dental Chair Unit</a></li>
+                        <li><a href="#products">Dental Compressors</a></li>
+                        <li><a href="#products">Autoclaves</a></li>
+                        <li><a href="#products">X-Ray Machines</a></li>
+                        <li><a href="#products">Ultrasonic Scalers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-building" style="margin-right: 8px; color: var(--sky-blue);"></i> Apex Dental Solution</li>
+                        <li style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-phone" style="margin-right: 8px; color: var(--sky-blue);"></i> 0333-5138965</li>
+                        <li style="color: rgba(255,255,255,0.7);"><i class="fa-solid fa-envelope" style="margin-right: 8px; color: var(--sky-blue);"></i> info@apexdentalsolution.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright &copy; 2026 Apex Dental Solution. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/923335138965" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <div class="back-to-top" id="backToTop" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Hide Preloader on Load
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+        });
+
+        // Navbar Scroll & Back-to-Top Toggle
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 400) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth Scroll to Top
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Drawer
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Counter Statistics Animation
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats-wrapper');
+            if (!statsSection) return;
+            const position = statsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight;
+
+            if (position < screenPosition && !animated) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const speed = Math.max(1, Math.ceil(target / 40));
+
+                    const updateCount = () => {
+                        count += speed;
+                        if (count < target) {
+                            counter.innerText = count + '+';
+                            setTimeout(updateCount, 40);
+                        } else {
+                            counter.innerText = target + '+';
+                        }
+                    };
+                    updateCount();
+                });
+                animated = true;
+            }
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for contacting Apex Dental Solution! Our engineering team will reach out to you shortly.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
